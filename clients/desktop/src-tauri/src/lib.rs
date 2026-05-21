@@ -719,16 +719,14 @@ impl DesktopRuntime {
             let _ = child.kill();
             let _ = child.wait();
             return Err(self.mark_connect_error(format!(
-                "Skirk did not open SOCKS endpoint {socks_address}\n{}",
-                read_log_tail(&log_path, 80)
+                "Skirk did not open SOCKS endpoint {socks_address}"
             )));
         }
         if !wait_for_tcp_endpoint(&http_probe_address, Duration::from_secs(10)) {
             let _ = child.kill();
             let _ = child.wait();
             return Err(self.mark_connect_error(format!(
-                "Skirk did not open HTTP proxy endpoint {http_address}\n{}",
-                read_log_tail(&log_path, 80)
+                "Skirk did not open HTTP proxy endpoint {http_address}"
             )));
         }
 
